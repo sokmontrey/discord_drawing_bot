@@ -1,5 +1,5 @@
 
-const fs = require('fs')
+//const fs = require('fs')
 const {createCanvas} = require('canvas')
 
 const width = 500
@@ -25,8 +25,8 @@ function draw(data){
 	else context.fillStyle = '#000000';
 	context.fillRect(x * step, y * step , step , step);
 
-	const buffer = canvas.toBuffer('image/png')
-	fs.writeFileSync('./test.png', buffer)
+//	const buffer = canvas.toBuffer('image/png')
+//	fs.writeFileSync('./test.png', buffer)
 }
 
 const Discord = require('discord.js-v11');
@@ -40,7 +40,7 @@ client.on('message', msg => {
 	var code = msg.content[0] + msg.content[1];
   	if (code === '/d' && msg.channel.id === '877042432783568957') {
 		draw(msg.content);	
-	 	msg.channel.send("", {files: ["./test.png"]});
+	 	msg.channel.send("", {files: [canvas.toBuffer('image/png')]});
   	}
 });
  
